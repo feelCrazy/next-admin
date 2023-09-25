@@ -1,13 +1,13 @@
+import Image from "next/image"
+import { GlobeIcon } from "@radix-ui/react-icons"
+
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { GlobeIcon } from "@radix-ui/react-icons"
-import { Button } from "@/components/ui/button"
-
-import Image from "next/image"
 
 interface Props {}
 
@@ -59,7 +59,7 @@ export default function SwtichLanguage({}: Props) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant='ghost' size='icon'>
-          <GlobeIcon className='w-5 h-5' />
+          <GlobeIcon className='h-5 w-5' />
         </Button>
       </DropdownMenuTrigger>
 

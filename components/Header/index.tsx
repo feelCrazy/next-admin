@@ -1,15 +1,16 @@
 "use client"
-import SwitchMode from "../SwitchMode"
-import Setting from "../Setting"
+
 import CommandMenu from "../CommandMenu"
-import UserMenu from "../UserMenu"
+import Setting from "../Setting"
 import SwtichLanguage from "../SwitchLanguage"
+import SwitchMode from "../SwitchMode"
+import UserMenu from "../UserMenu"
 
 interface Props {}
 
 export default function Header({}: Props) {
   return (
-    <div className='h-14 px-8 border-b border-cyan-300 flex items-center justify-between sticky top-0'>
+    <div className='sticky top-0 flex h-14 items-center justify-between border-b border-cyan-300 px-8'>
       <CommandMenu />
 
       <div className='flex items-center gap-4'>
