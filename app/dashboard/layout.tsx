@@ -77,9 +77,8 @@ export default function AdminLayout({
   ]
 
   return (
-    <main className='flex'>
+    <main className='flex min-h-screen gap-4'>
       <Sidebar items={menu} />
-
       <div className='flex-1'>
         <Header />
         {children}

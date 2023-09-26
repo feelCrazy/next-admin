@@ -83,7 +83,7 @@ export default function Sidebar({ className, items }: SidebarProps) {
   }
 
   return (
-    <div className={cn("w-[280px] pb-12", className)}>
+    <div className={cn("w-[280px]", className)}>
       <div className='space-y-4 py-4'>
         {renderChildren(items)}
 
