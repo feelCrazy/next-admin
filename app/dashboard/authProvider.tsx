@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 
 export default function AuthProvider({
@@ -9,17 +9,17 @@ export default function AuthProvider({
   children: React.ReactNode
 }) {
   const router = useRouter()
-  const user = sessionStorage.getItem("user") || "null"
-  const token = JSON.parse(user) !== null
-
+  const [show, setShow] = useState(false)
   useEffect(() => {
+    const user = sessionStorage.getItem("user") || "null"
+    const token = JSON.parse(user) !== null
+    setShow(token)
     if (!token) {
       router.push("/login")
     }
-  }, [router, token])
-
-  if (!token) {
-    return
+  }, [router])
+  if (!show) {
+    return null
   }
 
   return <>{children}</>

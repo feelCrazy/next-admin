@@ -10,11 +10,14 @@ export default function AdminLayout({
 }) {
   return (
     <AuthProvider>
-      <main className='flex min-h-screen gap-4'>
+      <main className='flex min-h-screen'>
         <Sidebar />
         <div className='flex-1'>
-          <Header />
-          {children}
+          <>
+            <Header />
+          </>
+
+          <div className='px-4 py-6'>{children}</div>
         </div>
       </main>
     </AuthProvider>
