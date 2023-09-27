@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation"
 import {
   Cloud,
   CreditCard,
@@ -15,6 +16,7 @@ import {
   Users,
 } from "lucide-react"
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,15 +31,20 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
 interface Props {}
 export default function UserMenu({}: Props) {
+  const router = useRouter()
+  const handleLogOut = () => {
+    sessionStorage.removeItem("user")
+    router.replace("/login")
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className='cursor-pointer w-8 h-8'>
-          <AvatarImage src='https://github.com/shadcn.png' alt='' />
+        <Avatar className='h-8 w-8 cursor-pointer'>
+          <AvatarImage src='' alt='' />
           <AvatarFallback>img</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
@@ -115,7 +122,7 @@ export default function UserMenu({}: Props) {
           <span>API</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={handleLogOut}>
           <LogOut className='mr-2 h-4 w-4' />
           <span>Log out</span>
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>

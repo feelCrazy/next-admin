@@ -1,15 +1,80 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
-import { usePathname } from "next/navigation"
+import React, { useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
+import {
+  LayoutGrid,
+  Library,
+  ListMusic,
+  Mic2,
+  Music2,
+  PlayCircle,
+  Radio,
+  User,
+} from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
 import { Button } from "../ui/button"
 import { ScrollArea } from "../ui/scroll-area"
 
+const menu = [
+  {
+    label: "Discover",
+    path: "200000",
+    children: [
+      {
+        label: "Listen Now",
+        path: "main",
+        icon: <PlayCircle size={16} className='mr-2' />,
+      },
+      {
+        label: "Browse",
+        path: "list",
+        icon: <LayoutGrid size={16} className='mr-2' />,
+      },
+      {
+        label: "Radio",
+        path: "3",
+        icon: <Radio size={16} className='mr-2' />,
+      },
+    ],
+  },
+  {
+    label: "Library",
+    path: "4",
+    children: [
+      {
+        label: "Playlists",
+        path: "4",
+        icon: <ListMusic size={16} className='mr-2' />,
+      },
+      {
+        label: "Songs",
+        path: "5",
+        icon: <Music2 size={16} className='mr-2' />,
+      },
+      {
+        label: "Made for You",
+        path: "6",
+        icon: <User size={16} className='mr-2' />,
+      },
+      {
+        label: "Artists",
+        path: "7",
+        icon: <Mic2 size={16} className='mr-2' />,
+      },
+      {
+        label: "Albums",
+        path: "8",
+        icon: <Library size={16} className='mr-2' />,
+      },
+    ],
+  },
+]
+
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
-  items: MenuItem[]
+  items?: MenuItem[]
 }
 
 interface MenuItem {
@@ -32,13 +97,18 @@ const playlists = [
   "Mellow Days",
   "Eminem Essentials",
 ]
-export default function Sidebar({ className, items }: SidebarProps) {
+export default function Sidebar({ className, items = menu }: SidebarProps) {
   const pathName = usePathname()
-  const [path, setPath] = useState(pathName)
+  const router = useRouter()
+  const currentPath = pathName.split("/")[2]
+
+  const [path, setPath] = useState(currentPath)
 
   const onClick = (val: string) => {
     setPath(val)
+    router.push(`/dashboard/${val}`)
   }
+
   const renderChildren = (items: MenuItem[]) => {
     return items.map((item) => {
       if (item.children) {

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
 import { Loader2 } from "lucide-react"
@@ -17,10 +18,10 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 
 export default function AuthForm() {
   const [loading, setLoading] = useState(false)
+  const router = useRouter()
   const formSchema = z.object({
     email: z.string().email({ message: "Invalid email address." }),
     password: z.string().min(1, { message: "Invalid password" }),
@@ -37,10 +38,14 @@ export default function AuthForm() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values)
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 3000)
+    sessionStorage.setItem("user", JSON.stringify(values))
+    router.replace("/dashboard")
+    // setLoading(true)
+    // setTimeout(() => {
+    // sessionStorage.setItem("user", JSON.stringify(values))
+    // redirect("/dashboard")
+    // setLoading(false)
+    // }, 3000)
   }
   const {
     formState: { errors },
@@ -50,7 +55,6 @@ export default function AuthForm() {
 
   return (
     <>
-      {" "}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-3'>
           <FormField
