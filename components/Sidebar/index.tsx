@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
+import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import {
   LayoutGrid,
@@ -25,12 +26,12 @@ const menu = [
     children: [
       {
         label: "Listen Now",
-        path: "main",
+        path: "/dashboard/main",
         icon: <PlayCircle size={16} className='mr-2' />,
       },
       {
         label: "Browse",
-        path: "list",
+        path: "/dashboard/list",
         icon: <LayoutGrid size={16} className='mr-2' />,
       },
       {
@@ -99,15 +100,6 @@ const playlists = [
 ]
 export default function Sidebar({ className, items = menu }: SidebarProps) {
   const pathName = usePathname()
-  const router = useRouter()
-  const currentPath = pathName.split("/")[2]
-
-  const [path, setPath] = useState(currentPath)
-
-  const onClick = (val: string) => {
-    setPath(val)
-    router.push(`/dashboard/${val}`)
-  }
 
   const renderChildren = (items: MenuItem[]) => {
     return items.map((item) => {
@@ -120,15 +112,16 @@ export default function Sidebar({ className, items = menu }: SidebarProps) {
             <div className='space-y-1'>
               {item.children.map((el) => {
                 return (
-                  <Button
-                    key={el.label}
-                    variant={el.path === path ? "secondary" : "ghost"}
-                    className='w-full justify-start'
-                    onClick={() => onClick(el.path)}
-                  >
-                    {el.icon}
-                    {el.label}
-                  </Button>
+                  <Link key={el.label} href={el.path}>
+                    <Button
+                      key={el.label}
+                      variant={el.path === pathName ? "secondary" : "ghost"}
+                      className='w-full justify-start'
+                    >
+                      {el.icon}
+                      {el.label}
+                    </Button>
+                  </Link>
                 )
               })}
             </div>
@@ -139,9 +132,8 @@ export default function Sidebar({ className, items = menu }: SidebarProps) {
           <div className='space-y-1' key={item.label}>
             <Button
               key={item.label}
-              variant={item.path === path ? "secondary" : "ghost"}
+              variant={item.path === pathName ? "secondary" : "ghost"}
               className='w-full justify-start'
-              onClick={() => onClick(item.path)}
             >
               {item.icon}
               {item.label}

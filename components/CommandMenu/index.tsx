@@ -1,4 +1,8 @@
+"use client"
+
 import { useEffect, useState } from "react"
+
+import { Button } from "../ui/button"
 import {
   CommandDialog,
   CommandEmpty,
@@ -7,7 +11,6 @@ import {
   CommandItem,
   CommandList,
 } from "../ui/command"
-import { Button } from "../ui/button"
 
 export default function CommandMenu() {
   const [open, setOpen] = useState(false)

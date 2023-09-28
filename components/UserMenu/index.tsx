@@ -1,3 +1,5 @@
+"use client"
+
 import { useRouter } from "next/navigation"
 import {
   Cloud,
@@ -36,7 +38,7 @@ interface Props {}
 export default function UserMenu({}: Props) {
   const router = useRouter()
   const handleLogOut = () => {
-    sessionStorage.removeItem("user")
+    document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 GMT"
     router.replace("/login")
   }
 

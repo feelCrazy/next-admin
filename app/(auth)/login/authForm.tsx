@@ -38,14 +38,9 @@ export default function AuthForm() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values)
-    sessionStorage.setItem("user", JSON.stringify(values))
+    setLoading(true)
+    document.cookie = `email=${values.email}`
     router.replace("/dashboard")
-    // setLoading(true)
-    // setTimeout(() => {
-    // sessionStorage.setItem("user", JSON.stringify(values))
-    // redirect("/dashboard")
-    // setLoading(false)
-    // }, 3000)
   }
   const {
     formState: { errors },

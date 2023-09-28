@@ -1,3 +1,5 @@
+import { GearIcon } from "@radix-ui/react-icons"
+
 import {
   Sheet,
   SheetContent,
@@ -6,8 +8,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+
 import { Button } from "../ui/button"
-import { GearIcon } from "@radix-ui/react-icons"
 
 interface Props {}
 export default function Setting({}: Props) {
@@ -15,7 +17,7 @@ export default function Setting({}: Props) {
     <Sheet>
       <SheetTrigger asChild>
         <Button variant='ghost' size='icon'>
-          <GearIcon className='w-5 h-5' />
+          <GearIcon className='h-5 w-5' />
         </Button>
       </SheetTrigger>
       <SheetContent>

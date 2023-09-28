@@ -9,49 +9,30 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+import cn from "../../public/flag/cn.svg"
+import de from "../../public/flag/de.svg"
+import gb from "../../public/flag/gb.svg"
+import jp from "../../public/flag/jp.svg"
+
 interface Props {}
 
 export default function SwtichLanguage({}: Props) {
   const items = [
     {
       label: "英文",
-      img: (
-        <Image
-          src={require("../../public/flag/gb.svg")}
-          alt=''
-          className='w-6 rounded-sm'
-        />
-      ),
+      img: gb,
     },
     {
       label: "中文",
-      img: (
-        <Image
-          src={require("../../public/flag/cn.svg")}
-          alt=''
-          className='w-6 rounded-sm'
-        />
-      ),
+      img: cn,
     },
     {
       label: "日文",
-      img: (
-        <Image
-          src={require("../../public/flag/jp.svg")}
-          alt=''
-          className='w-6 rounded-sm'
-        />
-      ),
+      img: jp,
     },
     {
       label: "德文",
-      img: (
-        <Image
-          src={require("../../public/flag/de.svg")}
-          alt=''
-          className='w-6 rounded-sm'
-        />
-      ),
+      img: de,
     },
   ]
 
@@ -66,7 +47,8 @@ export default function SwtichLanguage({}: Props) {
       <DropdownMenuContent>
         {items.map((item) => (
           <DropdownMenuItem key={item.label} className='gap-1'>
-            {item.img} {item.label}
+            <Image alt='' src={item.img} className='w-6 rounded-sm' />{" "}
+            {item.label}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
