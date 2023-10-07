@@ -1,3 +1,7 @@
+"use client"
+
+import { signIn, signOut, useSession } from "next-auth/react"
+
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -11,8 +15,13 @@ import {
 export default function Home() {
   return (
     <main className='flex items-center justify-between p-24'>
-      <Button>hello</Button>
-
+      <Button
+        onClick={() => {
+          signOut()
+        }}
+      >
+        hello
+      </Button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button>open</Button>

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
 import { Loader2 } from "lucide-react"
+import { signIn, signOut, useSession } from "next-auth/react"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
@@ -34,7 +35,7 @@ export default function AuthForm() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values)
@@ -42,6 +43,12 @@ export default function AuthForm() {
     document.cookie = `email=${values.email}`
     router.replace("/dashboard")
   }
+
+  const handleGithubLogin = () => {
+    setLoading(true)
+    signIn("github")
+  }
+
   const {
     formState: { errors },
   } = form
@@ -108,7 +115,12 @@ export default function AuthForm() {
           </span>
         </div>
       </div>
-      <Button variant='outline' type='button' disabled={loading}>
+      <Button
+        variant='outline'
+        type='button'
+        onClick={handleGithubLogin}
+        disabled={loading}
+      >
         {loading ? (
           <Loader2 className='mr-2 animate-spin' size={16} />
         ) : (

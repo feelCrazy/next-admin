@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { User } from "next-auth"
 
 import { cn } from "@/lib/utils"
 
@@ -10,9 +11,11 @@ import SwtichLanguage from "../SwitchLanguage"
 import SwitchMode from "../SwitchMode"
 import UserMenu from "../UserMenu"
 
-interface Props {}
+interface Props {
+  user: Pick<User, "name" | "image" | "email">
+}
 
-export default function Header({}: Props) {
+export default function Header({ user }: Props) {
   const navRef = useRef(null)
   const [show, setShow] = useState(false)
   useEffect(() => {
@@ -49,7 +52,7 @@ export default function Header({}: Props) {
           <SwtichLanguage />
           <SwitchMode />
           <Setting />
-          <UserMenu />
+          <UserMenu user={user} />
         </div>
       </div>
     </>

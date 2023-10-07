@@ -1,6 +1,5 @@
 "use client"
 
-import { useRouter } from "next/navigation"
 import {
   Cloud,
   CreditCard,
@@ -13,10 +12,12 @@ import {
   Plus,
   PlusCircle,
   Settings,
-  User,
+  UserIcon,
   UserPlus,
   Users,
 } from "lucide-react"
+import { User } from "next-auth"
+import { signOut } from "next-auth/react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
@@ -34,19 +35,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-interface Props {}
-export default function UserMenu({}: Props) {
-  const router = useRouter()
+interface Props {
+  user: Pick<User, "name" | "image" | "email">
+}
+export default function UserMenu({ user }: Props) {
   const handleLogOut = () => {
-    document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 GMT"
-    router.replace("/login")
+    signOut()
   }
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className='h-8 w-8 cursor-pointer'>
-          <AvatarImage src='' alt='' />
+          <AvatarImage src={user.image || ""} alt='' />
           <AvatarFallback>img</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
@@ -55,7 +56,7 @@ export default function UserMenu({}: Props) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <User className='mr-2 h-4 w-4' />
+            <UserIcon className='mr-2 h-4 w-4' />
             <span>Profile</span>
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
