@@ -2,15 +2,15 @@
 
 import React, { useState } from "react"
 import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 import {
+  Home,
   LayoutGrid,
   Library,
   ListMusic,
   Mic2,
   Music2,
-  PlayCircle,
-  Radio,
+  Receipt,
   User,
 } from "lucide-react"
 
@@ -21,23 +21,23 @@ import { ScrollArea } from "../ui/scroll-area"
 
 const menu = [
   {
-    label: "Discover",
+    label: "Dashboard",
     path: "200000",
     children: [
       {
-        label: "Listen Now",
-        path: "/dashboard/main",
-        icon: <PlayCircle size={16} className='mr-2' />,
+        label: "Home",
+        path: "/dashboard",
+        icon: <Home size={16} className='mr-2' />,
       },
       {
         label: "Browse",
         path: "/dashboard/list",
-        icon: <LayoutGrid size={16} className='mr-2' />,
+        icon: <Receipt size={16} className='mr-2' />,
       },
       {
         label: "Radio",
-        path: "3",
-        icon: <Radio size={16} className='mr-2' />,
+        path: "/dashboard/main",
+        icon: <LayoutGrid size={16} className='mr-2' />,
       },
     ],
   },
