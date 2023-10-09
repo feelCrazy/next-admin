@@ -12,6 +12,7 @@ import {
   YAxis,
 } from "recharts"
 
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Select,
@@ -111,31 +112,44 @@ export default function Analytics({}: Props) {
           </CardHeader>
           <CardContent className='pl-0'>
             <div
-              className='cursor-pointer border-l-2 border-l-transparent p-1
-             hover:border-l-black hover:bg-slate-50'
+              className='cursor-pointer border-l-2 border-l-transparent py-1 pl-2
+             hover:border-l-black dark:hover:border-l-white'
             >
-              <div className='flex justify-between rounded bg-gray-100 p-1 text-sm'>
+              <Button
+                variant='ghost'
+                className='flex w-full justify-between rounded bg-secondary 
+                px-3 py-1 text-sm'
+              >
                 <div className='font-light'>/detail/815/ADN-499</div>
                 <div className='font-medium'>8</div>
-              </div>
+              </Button>
             </div>
             <div
-              className='cursor-pointer border-l-2 border-l-transparent p-1
-             hover:border-l-black hover:bg-slate-50'
+              className='cursor-pointer border-l-2 border-l-transparent py-1 pl-2
+             hover:border-l-black dark:hover:border-l-white'
             >
-              <div className='flex justify-between rounded bg-gray-100 p-1 text-sm'>
+              <Button
+                variant='ghost'
+                className='flex w-full justify-between rounded bg-secondary 
+                px-3 py-1 text-sm'
+              >
                 <div className='font-light'>/detail/815/ADN-499</div>
                 <div className='font-medium'>8</div>
-              </div>
+              </Button>
             </div>
+
             <div
-              className='cursor-pointer border-l-2 border-l-transparent p-1
-             hover:border-l-black hover:bg-slate-50'
+              className='cursor-pointer border-l-2 border-l-transparent py-1 pl-2
+             hover:border-l-black dark:hover:border-l-white'
             >
-              <div className='flex justify-between rounded bg-gray-100 p-1 text-sm'>
+              <Button
+                variant='ghost'
+                className='flex w-full justify-between rounded bg-secondary 
+                px-3 py-1 text-sm'
+              >
                 <div className='font-light'>/detail/815/ADN-499</div>
                 <div className='font-medium'>8</div>
-              </div>
+              </Button>
             </div>
           </CardContent>
         </Card>
@@ -144,42 +158,46 @@ export default function Analytics({}: Props) {
           <CardHeader>
             <CardTitle>Top Referrers</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className='pl-0'>
             <div
-              className='cursor-pointer border-l-2 border-l-transparent p-1
-             hover:border-l-black hover:bg-slate-50'
+              className='cursor-pointer border-l-2 border-l-transparent py-1 pl-2
+             hover:border-l-black dark:hover:border-l-white'
             >
-              <div className='flex justify-between rounded bg-gray-100 p-1 text-sm'>
+              <Button
+                variant='ghost'
+                className='flex w-full justify-between rounded bg-secondary 
+                px-3 py-1 text-sm'
+              >
                 <div className='font-light'>/detail/815/ADN-499</div>
                 <div className='font-medium'>8</div>
-              </div>
+              </Button>
             </div>
             <div
-              className='cursor-pointer border-l-2 border-l-transparent p-1
-             hover:border-l-black hover:bg-slate-50'
+              className='cursor-pointer border-l-2 border-l-transparent py-1 pl-2
+             hover:border-l-black dark:hover:border-l-white'
             >
-              <div className='flex justify-between rounded bg-gray-100 p-1 text-sm'>
+              <Button
+                variant='ghost'
+                className='flex w-full justify-between rounded bg-secondary 
+                px-3 py-1 text-sm'
+              >
                 <div className='font-light'>/detail/815/ADN-499</div>
                 <div className='font-medium'>8</div>
-              </div>
+              </Button>
             </div>
+
             <div
-              className='cursor-pointer border-l-2 border-l-transparent p-1
-             hover:border-l-black hover:bg-slate-50'
+              className='cursor-pointer border-l-2 border-l-transparent py-1 pl-2
+             hover:border-l-black dark:hover:border-l-white'
             >
-              <div className='flex justify-between rounded bg-gray-100 p-1 text-sm'>
+              <Button
+                variant='ghost'
+                className='flex w-full justify-between rounded bg-secondary 
+                px-3 py-1 text-sm'
+              >
                 <div className='font-light'>/detail/815/ADN-499</div>
                 <div className='font-medium'>8</div>
-              </div>
-            </div>
-            <div
-              className='cursor-pointer border-l-2 border-l-transparent p-1
-             hover:border-l-black hover:bg-slate-50'
-            >
-              <div className='flex justify-between rounded bg-gray-100 p-1 text-sm'>
-                <div className='font-light'>/detail/815/ADN-499</div>
-                <div className='font-medium'>8</div>
-              </div>
+              </Button>
             </div>
           </CardContent>
         </Card>
