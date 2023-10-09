@@ -75,7 +75,9 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "amount",
     // header: "Amount",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Amount' />
+      <div className='flex justify-end'>
+        <DataTableColumnHeader column={column} title='Amount' />
+      </div>
     ),
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("amount"))
