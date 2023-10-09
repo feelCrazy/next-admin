@@ -1,15 +1,25 @@
 import { CreditCard, DollarSign, LineChart, Users } from "lucide-react"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
+import Analytics from "./components/analytics"
 import OverviewBar from "./components/overviewBar"
+import RecentSale from "./components/recentSale"
 
 interface Props {}
 export default function Page({}: Props) {
   return (
-    <div>
-      <div>Dashboard hello </div>
+    <div className='space-y-8'>
+      <div className='flex justify-between'>
+        <h2 className='text-3xl font-bold'>Dashboard</h2>
+      </div>
 
       <Tabs defaultValue='overview' className='space-y-4'>
         <TabsList className=''>
@@ -82,27 +92,34 @@ export default function Page({}: Props) {
           </div>
 
           <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-7'>
-            <Card className='col-span-4 xl:col-span-5'>
+            <Card className='col-span-4'>
               <CardHeader>
-                <CardTitle className='text-sm'>Overview</CardTitle>
+                <CardTitle>Overview</CardTitle>
               </CardHeader>
               <CardContent>
                 <OverviewBar />
               </CardContent>
             </Card>
 
-            <div className='col-span-3 bg-orange-400 xl:col-span-2'>sd</div>
+            <Card className='col-span-3'>
+              <CardHeader>
+                <CardTitle>Recent</CardTitle>
+                <CardDescription>
+                  You made 265 sales this month.
+                </CardDescription>
+              </CardHeader>
+
+              <CardContent>
+                <RecentSale />
+              </CardContent>
+            </Card>
           </div>
         </TabsContent>
         <TabsContent value='analytics'>
-          Change your password here.analytics
+          <Analytics />
         </TabsContent>
-        <TabsContent value='reports'>
-          Change your password here.reports
-        </TabsContent>
-        <TabsContent value='notifications'>
-          Change your password here.notifications
-        </TabsContent>
+        <TabsContent value='reports'>your here.reports</TabsContent>
+        <TabsContent value='notifications'>your here.notifications</TabsContent>
       </Tabs>
     </div>
   )
