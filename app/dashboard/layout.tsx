@@ -1,6 +1,10 @@
 import { getCurrentUser } from "@/lib/auth"
 import Header from "@/components/Header"
+import Setting from "@/components/Setting"
 import Sidebar from "@/components/Sidebar"
+import SwtichLanguage from "@/components/SwitchLanguage"
+import SwitchMode from "@/components/SwitchMode"
+import UserMenu from "@/components/UserMenu"
 
 export default async function AdminLayout({
   children,
@@ -11,17 +15,22 @@ export default async function AdminLayout({
 
   return (
     <main className='flex min-h-screen'>
-      <Sidebar className='border-r' />
       <div className='flex-1'>
-        <Header
-          user={{
-            name: user?.name,
-            image: user?.image,
-            email: user?.email,
-          }}
-        />
+        <Header>
+          <SwtichLanguage />
+          <SwitchMode />
+          <Setting />
+          <UserMenu
+            user={{
+              name: user?.name,
+              image: user?.image,
+              email: user?.email,
+            }}
+          />
+        </Header>
+        <Sidebar className='fixed hidden border-r xl:flex' />
 
-        <div className='px-4 py-6'>{children}</div>
+        <div className='container mt-24 xl:pl-[280px]'>{children}</div>
       </div>
     </main>
   )

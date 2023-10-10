@@ -81,8 +81,6 @@ export default function OverviewBar({}: Props) {
             axisLine={false}
             tickFormatter={(value) => `$${value}`}
           />
-          {/* <Tooltip /> */}
-          {/* <Legend /> */}
           <Bar dataKey='pv' fill='rgb(251 146 60)' radius={[4, 4, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>

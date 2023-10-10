@@ -1,27 +1,28 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { Menu } from "lucide-react"
 import { User } from "next-auth"
 
 import { cn } from "@/lib/utils"
 
 import CommandMenu from "../CommandMenu"
-import Setting from "../Setting"
-import SwtichLanguage from "../SwitchLanguage"
-import SwitchMode from "../SwitchMode"
-import UserMenu from "../UserMenu"
+import MobileSidebar from "../MobileSidebar"
+import { Button } from "../ui/button"
 
 interface Props {
-  user: Pick<User, "name" | "image" | "email">
+  children?: React.ReactNode
 }
 
-export default function Header({ user }: Props) {
+export default function Header({ children }: Props) {
   const navRef = useRef(null)
-  const [show, setShow] = useState(false)
+  const [scroll, setScroll] = useState(false)
+  const [open, setOpen] = useState(false)
+
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver(
       (entries) => {
-        setShow(!entries[0].isIntersecting)
+        setScroll(!entries[0].isIntersecting)
       },
       {
         root: null,
@@ -40,21 +41,29 @@ export default function Header({ user }: Props) {
       <div ref={navRef}></div>
       <div
         className={cn(
-          "sticky top-0 z-50  flex h-16 items-center justify-between border-b bg-background px-8",
+          "fixed left-auto right-0 top-0 z-50 flex  h-16 w-full items-center justify-between border-b bg-background px-8 xl:w-[calc(100%-280px)]",
           {
-            "h-12": show,
+            "h-12": scroll,
           },
         )}
       >
-        <CommandMenu />
-
         <div className='flex items-center gap-4'>
-          <SwtichLanguage />
-          <SwitchMode />
-          <Setting />
-          <UserMenu user={user} />
+          <Button
+            variant='ghost'
+            className='xl:hidden'
+            size='icon'
+            onClick={() => setOpen(true)}
+          >
+            <Menu size={24} />
+          </Button>
+
+          <CommandMenu />
         </div>
+
+        <div className='flex items-center gap-4'>{children}</div>
       </div>
+
+      <MobileSidebar open={open} onOpenChange={setOpen} />
     </>
   )
 }

@@ -5,7 +5,10 @@ import { Info } from "lucide-react"
 import {
   Area,
   AreaChart,
+  Bar,
+  BarChart,
   CartesianGrid,
+  Legend,
   ResponsiveContainer,
   Tooltip as TooltipChart,
   XAxis,
@@ -13,7 +16,13 @@ import {
 } from "recharts"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import {
   Select,
   SelectContent,
@@ -91,11 +100,21 @@ export default function Analytics({}: Props) {
           </Select>
         </CardHeader>
         <CardContent>
-          <AnalyticsChart data={data} />
+          <AnalyticsLineChart data={data} />
         </CardContent>
       </Card>
 
-      <div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
+      <div className='grid grid-cols-1 gap-4 lg:grid-cols-3'>
+        <Card className='col-span-3 xl:col-span-2'>
+          <CardHeader>
+            <CardTitle>Conversion Rates</CardTitle>
+            <CardDescription>(+43%) than last year</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <AnalyticsBarChar data={data} />
+          </CardContent>
+        </Card>
+
         <Card>
           <CardHeader>
             <CardTitle className='flex flex-row items-center gap-2'>
@@ -206,7 +225,7 @@ export default function Analytics({}: Props) {
   )
 }
 
-const AnalyticsChart = ({
+const AnalyticsLineChart = ({
   data,
 }: {
   data: { name: string; value: number }[]
@@ -236,6 +255,38 @@ const AnalyticsChart = ({
           activeDot={{ r: 4 }}
         />
       </AreaChart>
+    </ResponsiveContainer>
+  )
+}
+
+const AnalyticsBarChar = ({
+  data,
+}: {
+  data: { name: string; value: number }[]
+}) => {
+  return (
+    <ResponsiveContainer width='100%' height={400}>
+      <BarChart
+        layout='vertical'
+        data={data}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray='3 3' vertical={false} />
+        <XAxis type='number' />
+        <YAxis dataKey='name' type='category' />
+        <TooltipChart />
+        <Bar
+          dataKey='value'
+          barSize={10}
+          fill='#82ca9d'
+          radius={[0, 4, 4, 0]}
+        />
+      </BarChart>
     </ResponsiveContainer>
   )
 }

@@ -5,8 +5,8 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
   Home,
-  LayoutGrid,
   Library,
+  LineChart,
   ListMusic,
   Mic2,
   Music2,
@@ -30,14 +30,14 @@ const menu = [
         icon: <Home size={16} className='mr-2' />,
       },
       {
-        label: "Browse",
+        label: "Bill",
         path: "/dashboard/list",
         icon: <Receipt size={16} className='mr-2' />,
       },
       {
-        label: "Radio",
-        path: "/dashboard/main",
-        icon: <LayoutGrid size={16} className='mr-2' />,
+        label: "Analytics",
+        path: "/dashboard/analytics",
+        icon: <LineChart size={16} className='mr-2' />,
       },
     ],
   },
@@ -76,6 +76,7 @@ const menu = [
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   items?: MenuItem[]
+  onClick?: () => void
 }
 
 interface MenuItem {
@@ -98,7 +99,11 @@ const playlists = [
   "Mellow Days",
   "Eminem Essentials",
 ]
-export default function Sidebar({ className, items = menu }: SidebarProps) {
+export default function Sidebar({
+  className,
+  items = menu,
+  onClick,
+}: SidebarProps) {
   const pathName = usePathname()
 
   const renderChildren = (items: MenuItem[]) => {
@@ -109,14 +114,15 @@ export default function Sidebar({ className, items = menu }: SidebarProps) {
             <h2 className='mb-2 px-4 text-lg font-semibold tracking-tight'>
               {item.label}
             </h2>
-            <div className='space-y-1'>
+            <div>
               {item.children.map((el) => {
                 return (
                   <Link key={el.label} href={el.path}>
                     <Button
                       key={el.label}
+                      onClick={onClick}
                       variant={el.path === pathName ? "secondary" : "ghost"}
-                      className='w-full justify-start'
+                      className='mb-1 w-full justify-start'
                     >
                       {el.icon}
                       {el.label}
@@ -129,7 +135,7 @@ export default function Sidebar({ className, items = menu }: SidebarProps) {
         )
       } else {
         return (
-          <div className='space-y-1' key={item.label}>
+          <div key={item.label}>
             <Button
               key={item.label}
               variant={item.path === pathName ? "secondary" : "ghost"}
@@ -145,8 +151,8 @@ export default function Sidebar({ className, items = menu }: SidebarProps) {
   }
 
   return (
-    <div className={cn("w-[280px]", className)}>
-      <div className='space-y-4 py-4'>
+    <div className={cn("h-full w-[280px]", className)}>
+      <div className='py-4'>
         {renderChildren(items)}
 
         <div className='py-2'>
@@ -154,7 +160,7 @@ export default function Sidebar({ className, items = menu }: SidebarProps) {
             Playlists
           </h2>
           <ScrollArea className='h-[300px] px-1'>
-            <div className='space-y-1 p-2'>
+            <div className='p-2'>
               {playlists?.map((playlist, i) => (
                 <Button
                   key={`${playlist}-${i}`}
