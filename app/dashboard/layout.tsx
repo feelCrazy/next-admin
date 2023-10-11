@@ -30,7 +30,7 @@ export default async function AdminLayout({
         </Header>
         <Sidebar className='fixed hidden border-r xl:flex' />
 
-        <div className='container mt-24 xl:pl-[280px]'>{children}</div>
+        <div className='container mt-24 pb-8 xl:pl-[280px]'>{children}</div>
       </div>
     </main>
   )

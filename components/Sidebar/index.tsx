@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
+  GanttChartSquare,
   Home,
   Library,
   LineChart,
@@ -11,6 +12,7 @@ import {
   Mic2,
   Music2,
   Receipt,
+  Table,
   User,
 } from "lucide-react"
 
@@ -38,6 +40,16 @@ const menu = [
         label: "Analytics",
         path: "/dashboard/analytics",
         icon: <LineChart size={16} className='mr-2' />,
+      },
+      {
+        label: "Table",
+        path: "/dashboard/table",
+        icon: <Table size={16} className='mr-2' />,
+      },
+      {
+        label: "Form",
+        path: "/dashboard/form",
+        icon: <GanttChartSquare size={16} className='mr-2' />,
       },
     ],
   },
@@ -117,17 +129,18 @@ export default function Sidebar({
             <div>
               {item.children.map((el) => {
                 return (
-                  <Link key={el.label} href={el.path}>
-                    <Button
-                      key={el.label}
-                      onClick={onClick}
-                      variant={el.path === pathName ? "secondary" : "ghost"}
-                      className='mb-1 w-full justify-start'
-                    >
+                  <Button
+                    key={el.label}
+                    asChild
+                    onClick={onClick}
+                    variant={el.path === pathName ? "secondary" : "ghost"}
+                    className='mb-1 w-full justify-start'
+                  >
+                    <Link href={el.path}>
                       {el.icon}
-                      {el.label}
-                    </Button>
-                  </Link>
+                      {el.label}{" "}
+                    </Link>
+                  </Button>
                 )
               })}
             </div>
