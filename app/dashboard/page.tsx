@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-import Analytics from "./components/analytics"
+import Analytics from "./analytics/analytics"
 import OverviewBar from "./components/overviewBar"
 import PieChartAnalytics from "./components/pieChart"
 import RecentSale from "./components/recentSale"

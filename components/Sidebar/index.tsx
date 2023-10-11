@@ -32,14 +32,9 @@ const menu = [
         icon: <Home size={16} className='mr-2' />,
       },
       {
-        label: "Bill",
-        path: "/dashboard/list",
-        icon: <Receipt size={16} className='mr-2' />,
-      },
-      {
-        label: "Analytics",
-        path: "/dashboard/analytics",
-        icon: <LineChart size={16} className='mr-2' />,
+        label: "Form",
+        path: "/dashboard/form",
+        icon: <GanttChartSquare size={16} className='mr-2' />,
       },
       {
         label: "Table",
@@ -47,9 +42,14 @@ const menu = [
         icon: <Table size={16} className='mr-2' />,
       },
       {
-        label: "Form",
-        path: "/dashboard/form",
-        icon: <GanttChartSquare size={16} className='mr-2' />,
+        label: "Charts",
+        path: "/dashboard/analytics",
+        icon: <LineChart size={16} className='mr-2' />,
+      },
+      {
+        label: "Bill",
+        path: "/dashboard/list",
+        icon: <Receipt size={16} className='mr-2' />,
       },
     ],
   },
