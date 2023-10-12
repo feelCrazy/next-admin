@@ -1,5 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
+import ComplexTable from "./complex-table"
+import PaginationTable from "./pagination-table"
+import SelectionTable from "./selection-table"
 import SimpleTable from "./simple-table"
 
 interface Props {}
@@ -17,23 +20,29 @@ export default function Page({}: Props) {
 
       <Card>
         <CardHeader>
-          <CardTitle>12</CardTitle>
+          <CardTitle>PaginationTable</CardTitle>
         </CardHeader>
-        <CardContent></CardContent>
+        <CardContent>
+          <PaginationTable />
+        </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>12</CardTitle>
+          <CardTitle>SelectionTable</CardTitle>
         </CardHeader>
-        <CardContent></CardContent>
+        <CardContent>
+          <SelectionTable />
+        </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>12</CardTitle>
+          <CardTitle>ComplexTable</CardTitle>
         </CardHeader>
-        <CardContent></CardContent>
+        <CardContent>
+          <ComplexTable />
+        </CardContent>
       </Card>
     </div>
   )

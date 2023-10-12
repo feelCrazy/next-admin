@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { DotsHorizontalIcon } from "@radix-ui/react-icons"
 import {
   ColumnDef,
@@ -10,6 +11,7 @@ import {
 } from "@tanstack/react-table"
 
 import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,6 +33,24 @@ import { data, Payment } from "./data"
 import DataTablePagination from "./DataTablePagination"
 
 const columns: ColumnDef<Payment>[] = [
+  {
+    accessorKey: "id",
+    header: ({ table }) => (
+      <Checkbox
+        checked={table.getIsAllPageRowsSelected()}
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label='Select all'
+      />
+    ),
+    cell: ({ row }) => (
+      <div>
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+        />
+      </div>
+    ),
+  },
   {
     accessorKey: "status",
     header: "Status",
@@ -80,12 +100,19 @@ const columns: ColumnDef<Payment>[] = [
   },
 ]
 
-export default function PaginationTable() {
+export default function SelectionTable() {
+  const [rowSelection, setRowSelection] = useState({})
+
   const table = useReactTable({
     data,
     columns,
+    enableRowSelection: true,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onRowSelectionChange: setRowSelection,
+    state: {
+      rowSelection,
+    },
     debugTable: true,
   })
 
