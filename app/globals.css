@@ -48,7 +48,17 @@
     --ring: 224.3 76.3% 48%;
   }
 }
-
-path {
-  outline: none;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+  path {
+    outline: none;
+  }
 }
