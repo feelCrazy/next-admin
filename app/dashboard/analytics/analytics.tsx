@@ -26,6 +26,7 @@ import {
 
 import PieChartAnalytics from "../components/pieChart"
 import SimpleAreaChart from "./area-chart"
+import SimpleLineChart from "./line-chart"
 import SimpleRadarChart from "./radar-chart"
 import VerticalBarChar from "./vertical-bar-chart"
 
@@ -79,7 +80,7 @@ export default function Analytics({}: Props) {
     <div className='space-y-6'>
       <Card>
         <CardHeader className='flex flex-row items-center justify-between'>
-          <CardTitle>Monthly</CardTitle>
+          <CardTitle>AreaChart</CardTitle>
           <Select defaultValue='7' onValueChange={changeSelect}>
             <SelectTrigger className='w-[180px]'>
               <SelectValue placeholder='Select a fruit' />
@@ -99,17 +100,25 @@ export default function Analytics({}: Props) {
       <div className='grid grid-cols-1 gap-4 lg:grid-cols-3'>
         <Card className='col-span-3 xl:col-span-2'>
           <CardHeader>
-            <CardTitle>Conversion Rates</CardTitle>
-            <CardDescription>(+43%) than last year</CardDescription>
+            <CardTitle>BarChar</CardTitle>
           </CardHeader>
           <CardContent>
             <VerticalBarChar data={data} />
           </CardContent>
         </Card>
 
+        <Card className='col-span-3'>
+          <CardHeader>
+            <CardTitle>LineChart</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <SimpleLineChart />
+          </CardContent>
+        </Card>
+
         <Card>
           <CardHeader>
-            <CardTitle>Top Referrers</CardTitle>
+            <CardTitle>PieChart</CardTitle>
           </CardHeader>
           <CardContent className='pl-0'>
             <PieChartAnalytics />
@@ -119,7 +128,7 @@ export default function Analytics({}: Props) {
         <Card>
           <CardHeader>
             <CardTitle className='flex flex-row items-center gap-2'>
-              Top Pages
+              RadarChart
               <TooltipProvider delayDuration={0}>
                 <Tooltip>
                   <TooltipTrigger asChild>

@@ -8,7 +8,7 @@ interface Props {
 export default function MobileSidebar({ open, onOpenChange }: Props) {
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side='left' showClose={false}>
+      <SheetContent side='left' className='w-[280px] p-0' showClose={false}>
         <Sidebar onClick={() => onOpenChange(false)} />
       </SheetContent>
     </Sheet>

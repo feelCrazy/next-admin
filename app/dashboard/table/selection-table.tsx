@@ -113,7 +113,6 @@ export default function SelectionTable() {
     state: {
       rowSelection,
     },
-    debugTable: true,
   })
 
   return (

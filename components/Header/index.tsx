@@ -41,16 +41,16 @@ export default function Header({ children }: Props) {
       <div ref={navRef}></div>
       <div
         className={cn(
-          "fixed left-auto right-0 top-0 z-50 flex  h-16 w-full items-center justify-between border-b bg-background px-8 xl:w-[calc(100%-280px)]",
-          {
-            "h-12": scroll,
-          },
+          "fixed right-0 top-0 z-50 flex h-16 w-full items-center justify-between border-b bg-background px-6 xl:w-[calc(100%-240px)]",
+          // {
+          //   "h-12": scroll,
+          // },
         )}
       >
         <div className='flex items-center gap-4'>
           <Button
             variant='ghost'
-            className='xl:hidden'
+            className='-ml-3 xl:hidden'
             size='icon'
             onClick={() => setOpen(true)}
           >

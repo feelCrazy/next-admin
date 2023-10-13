@@ -192,7 +192,6 @@ export default function ComplexTable() {
       columnFilters,
       expanded,
     },
-    debugTable: true,
   })
 
   return (

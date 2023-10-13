@@ -86,7 +86,6 @@ export default function PaginationTable() {
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    debugTable: true,
   })
 
   return (
