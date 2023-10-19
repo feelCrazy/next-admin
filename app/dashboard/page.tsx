@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
+import { CardsChat } from "./components/chat"
 import OverviewBar from "./components/overviewBar"
 import PieChartAnalytics from "./components/pieChart"
 import RecentSale from "./components/recentSale"
@@ -107,6 +108,9 @@ export default function Page({}: Props) {
 
         <div className='grid grid-cols-4 gap-4'>
           <div className='col-span-2'>
+            <CardsChat />
+          </div>
+          <div className='col-span-2'>
             <Card>
               <CardHeader>
                 <CardTitle>Recent</CardTitle>
@@ -115,17 +119,6 @@ export default function Page({}: Props) {
                 </CardDescription>
               </CardHeader>
 
-              <CardContent>
-                <RecentSale />
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className='col-span-2 '>
-            <Card>
-              <CardHeader>
-                <CardTitle>Top Related Applications</CardTitle>
-              </CardHeader>
               <CardContent>
                 <RecentSale />
               </CardContent>
