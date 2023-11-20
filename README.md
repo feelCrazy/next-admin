@@ -16,12 +16,18 @@ This is a starter template using the following stack:
 
 ## Getting Started
 
-First, run the development server:
+First, install packages:
 
 ```bash
-npm run dev
 # or
-yarn dev
+pnpm intall
+# or
+bun install
+```
+
+## Start the app
+
+```bash
 # or
 pnpm dev
 # or
