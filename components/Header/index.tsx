@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Menu } from "lucide-react"
-import { User } from "next-auth"
 
 import { cn } from "@/lib/utils"
 

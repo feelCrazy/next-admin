@@ -1,4 +1,4 @@
-import { getCurrentUser } from "@/lib/auth"
+import { auth } from "@/lib/auth"
 import Header from "@/components/Header"
 import Setting from "@/components/Setting"
 import Sidebar from "@/components/Sidebar"
@@ -11,7 +11,10 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode
 }) {
-  const user = await getCurrentUser()
+  const session = await auth()
+  if (!session?.user) {
+    return null
+  }
 
   return (
     <main className='flex min-h-screen'>
@@ -22,9 +25,9 @@ export default async function AdminLayout({
           <Setting />
           <UserMenu
             user={{
-              name: user?.name,
-              image: user?.image,
-              email: user?.email,
+              name: session.user.name,
+              image: session.user.image,
+              email: session.user.email,
             }}
           />
         </Header>

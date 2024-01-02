@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
 import { Loader2 } from "lucide-react"
-import { signIn, signOut, useSession } from "next-auth/react"
+import { signIn } from "next-auth/react"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
@@ -44,9 +44,9 @@ export default function AuthForm() {
     router.replace("/dashboard")
   }
 
-  const handleGithubLogin = () => {
+  const handleGithubLogin = async () => {
     setLoading(true)
-    signIn("github")
+    await signIn("github")
   }
 
   const {

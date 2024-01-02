@@ -93,7 +93,6 @@ export function CardsChat() {
       // viewRef.current.scrollIntoView({
       //   behavior: "smooth",
       // })
-      console.log(">>>>>", viewRef.current.scrollHeight)
       viewRef.current.scrollTop = 500
       // ref2.current.scrollTop = viewRef.current.scrollHeight
     }
