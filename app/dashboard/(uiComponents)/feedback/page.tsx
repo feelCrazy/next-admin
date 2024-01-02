@@ -1,6 +1,7 @@
 "use client"
 
 import { AlertTriangle, RocketIcon } from "lucide-react"
+import { toast as toastSonner } from "sonner"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import {
@@ -151,6 +152,29 @@ export default function Page({}: Props) {
             }}
           >
             Add to calendar(destructive)
+          </Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Sonner</CardTitle>
+        </CardHeader>
+
+        <CardContent>
+          <Button
+            variant='outline'
+            onClick={() =>
+              toastSonner("Event has been created", {
+                description: "Sunday, December 03, 2023 at 9:00 AM",
+                action: {
+                  label: "Undo",
+                  onClick: () => console.log("Undo"),
+                },
+              })
+            }
+          >
+            Show Toast
           </Button>
         </CardContent>
       </Card>

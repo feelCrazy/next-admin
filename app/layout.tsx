@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
 import { Toaster } from "@/components/ui/toaster"
+import { Toaster as SonnerToaster } from "@/components/ui/sonner"
 
 import Providers from "./provider"
 
@@ -25,6 +26,7 @@ export default function RootLayout({
         <Providers>
           {children}
           <Toaster />
+          <SonnerToaster />
         </Providers>
       </body>
     </html>
